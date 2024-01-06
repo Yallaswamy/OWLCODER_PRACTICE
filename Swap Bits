@@ -1,0 +1,14 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int x,p1,p2,n;
+    int f=0,s=0,xor1=0;
+    cin>>x>>p1>>p2>>n;
+    f=x>>p1&(1<<n)-1;
+    s=x>>p2&(1<<n)-1;  //(1<<n)-1 means no of ones in n
+
+    xor1=f^s;
+    xor1=xor1<<p1|xor1<<p2;
+    int ans=x^xor1;
+    cout<<ans;
+}
