@@ -1,0 +1,12 @@
+https://owlcoder.technicalhub.io/course-program/course-program-compiler-dark/654b6b99f87ca5a69d5a68a3/
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int a,b;
+    cin>>a>>b;
+    int ans=a;
+    for(int i=a+1;i<=b;i++){
+        ans=ans&i;
+    }
+    cout<<ans;
+}
