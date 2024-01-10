@@ -1,0 +1,47 @@
+//modular arithmetic
+//BINARY EXPONATION
+/*
+//pow of two number
+a=2 b=7 res=1
+while(b){
+    if(b&1){
+        b=b-1;
+        res=res*a;
+    }
+    else{
+        b=b/2;
+        a=a*a;
+    }
+}
+*/
+int BINARYEXPONATION(int a,int b){
+    int ans=1;
+    while(b){
+        if(b&1){
+            b=b-1;
+            ans*=a;
+        }
+        else{
+            b=b/2;
+            a=a*a;
+        }
+    }
+    return ans;
+}
+
+int inverse(int b){
+    const  long long  mod=1e9+7;
+    return  BINARYEXPONATION(b,mod-2);
+    
+    
+}
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int a,b;
+    cin>>a>>b;
+    int ans=BINARYEXPONATION(a,b);
+    int ans1=inverse(b);
+    cout<<ans;
+    cout<<ans1;
+}
