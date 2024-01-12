@@ -1,0 +1,52 @@
+//segment seive
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long 
+#define pb push_back
+#define mp make_pair
+const ll N=1000001;
+vector<ll>primes(N,1);
+void sieve(){
+    primes[0]=primes[1]=0;
+    for(int i=2;i*i<N;i++){
+        if(primes[i]==1){
+            for(int j=i*i;j<N;j+=i){
+                primes[j]=0;
+            }
+        }
+    }
+}
+vector<ll>getprimes(ll r){
+    vector<ll>ds;
+    for(int i=2;i*i<N;i++){
+        if(primes[i]==1){
+            ds.pb(i);
+        }
+    }
+    return ds;
+}
+int main(){
+    sieve();
+    ll l,r;
+    cin>>l>>r;
+    ll len=r-l+1;
+    vector<ll>segmentseive(len,1);
+    vector<ll>helpprimes;
+    helpprimes=getprimes(r);
+    //{2 3 5 7  11{
+    // 110 134
+    //0   1   2    3   4 
+    //110 111 112 113  114
+    for(auto i:helpprimes){
+        //find the first mul if i to l
+        ll fmul=(l/i)*i;
+        if(fmul<l) fmul+=i;
+        for(int j=max((i*i),fmul);j<r;j+=fmul){
+            segmentseive[j-l]=0;
+            
+        }
+    }
+    for(int i=0;i<len;i++){
+        cout<<segmentseive[i]<<" ";
+    }
+}
