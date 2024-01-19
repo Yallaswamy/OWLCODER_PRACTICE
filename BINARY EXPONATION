@@ -14,6 +14,16 @@ while(b){
     }
 }
 */
+long long power(long long base,long long exp){
+    if(exp==0)return 1;
+    long long ans = power(base,exp/2);
+    if(exp%2==0){
+        return (ans%mod*ans%mod)%mod;
+    }
+    else {
+        return (ans%mod*ans%mod*base%mod)%mod;
+    }
+}
 int BINARYEXPONATION(int a,int b){
     int ans=1;
     while(b){
